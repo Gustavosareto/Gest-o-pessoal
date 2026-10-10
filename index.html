@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Caixa</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="app">
+  <header class="top">
+    <h1>Caixa</h1>
+    <nav class="months" aria-label="Mês">
+      <button id="prev" aria-label="Mês anterior">‹</button>
+      <strong id="monthLabel"></strong>
+      <button id="next" aria-label="Próximo mês">›</button>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div>
+      <p class="muted">Você tem</p>
+      <p class="total" id="total"></p>
+    </div>
+    <dl class="month-stats">
+      <div><dt>Entradas</dt><dd id="inc" class="pos"></dd></div>
+      <div><dt>Gastos</dt><dd id="exp" class="neg"></dd></div>
+      <div><dt>Saldo do mês</dt><dd id="net"></dd></div>
+    </dl>
+    <div class="ratio">
+      <div class="bar"><i id="ratioBar"></i></div>
+      <p id="ratioText" class="muted"></p>
+    </div>
+  </section>
+
+  <div class="grid">
+    <form id="form" class="card panel" autocomplete="off">
+      <h2 id="formTitle">Novo lançamento</h2>
+      <div class="seg" role="radiogroup" aria-label="Tipo de lançamento">
+        <button type="button" role="radio" data-type="expense" aria-checked="true">Gasto</button>
+        <button type="button" role="radio" data-type="income" aria-checked="false">Entrada</button>
+      </div>
+      <label>Valor
+        <span class="money"><b>€</b><input id="amount" inputmode="numeric" placeholder="0,00" required></span>
+      </label>
+      <label>Descrição
+        <input id="desc" placeholder="Ex.: Uber para o aeroporto" required>
+      </label>
+      <div class="label">
+        <span>Categoria <span id="autoNote" class="muted"></span></span>
+        <div id="cats" class="cats"></div>
+      </div>
+      <label>Data <input id="date" type="date" required></label>
+      <button class="primary" id="submit">Adicionar gasto</button>
+      <button class="ghost" type="button" id="cancel" hidden>Cancelar edição</button>
+    </form>
+
+    <div class="stack">
+      <section class="card"><h2>Para onde foi o dinheiro</h2><div id="breakdown"></div></section>
+      <section class="card"><h2>Lançamentos</h2><div id="list"></div></section>
+    </div>
+  </div>
+</main>
+<div id="toast" role="status" aria-live="polite"></div>
+<script src="app.js"></script>
+</body>
+</html>
